@@ -45,8 +45,7 @@ def system(choices, text1):
 
         match outcome:
             case 0:
-                playerWins += 1
-                computerWins += 1
+                pass
             case 1:
                 playerWins += 1
             case 2:
@@ -58,21 +57,20 @@ def system(choices, text1):
     elif playerWins > computerWins:
         print("Selamat Anda memenangkan permainan ini!!!")
     else:
-        print("Anda kalah")
+        print("Anda kalah :(")
     print()
 
 
 def keguba():
     choicesKeguba = ["Kertas", "Gunting", "Batu"]
-    textKeguba1 = "\n--- Selamat datang di permainan Kertas-Gunting-Batu ---\nAturan Main:\n- Kertas kalah oleh Gunting\n- Gunting kalah oleh Batu\n- Batu kalah oleh Kertas"
-    system(choicesKeguba, textKeguba1)
+    textKeguba = "\n--- Selamat datang di permainan Kertas-Gunting-Batu ---\nAturan Main:\n- Kertas kalah oleh Gunting\n- Gunting kalah oleh Batu\n- Batu kalah oleh Kertas"
+    system(choicesKeguba, textKeguba)
 
 
 def suit():
-    print(
-        "\n--- Selamat datang di permainan Kertas-Gunting-Batu ---\nAturan Main:\n- Kertas kalah oleh Gunting\n- Gunting kalah oleh Batu\n- Batu kalah oleh Kertas"
-    )
-    print("Pilihan:\n1. Kertas\n2. Gunting\n3. Batu")
+    choicesSuit = ["Ibu Jari", "Jari Kelingking", "Jari Telunjuk"]
+    textsuit = "\n--- Selamat datang di permainan Suit ---\nAturan Main:\n- Ibu Jari kalah oleh Kelingking\n- Jari Kelingking kalah oleh Jari Telunjuk\n- Jari Telunjuk kalah oleh Ibu Jari"
+    system(choicesSuit, textsuit)
 
 
 def main():

@@ -1,78 +1,71 @@
 import random
 
 
-def playerMilih(prompt):
+def system(choices, text1):
+    playerWins = 0
+    computerWins = 0
+    print(text1)
     while True:
         try:
-            print(prompt)
-            pilihan = int(input("Silahkan pilih nomor pilihan Anda: "))
-            if not 0 < pilihan < 4:
-                print("Tolong pilih nomor yang telah disediakan")
-            else:
-                return pilihan
-        except ValueError:
-            print("Tolong Masukkan Angka!\n")
-
-
-def computerMilih():
-    return random.randrange(1, 4)
-
-
-def cek(player, computer):
-    if player == 1 and computer == 2:
-        hasil = 2
-    elif player == 1 and computer == 3:
-        hasil = 1
-    elif player == 2 and computer == 1:
-        hasil = 1
-    elif player == 2 and computer == 3:
-        hasil = 2
-    elif player == 3 and computer == 1:
-        hasil = 2
-    elif player == 3 and computer == 2:
-        hasil = 1
-    else:
-        hasil = 0
-    return hasil
-
-
-def keguba():
-    pilihan = ["Kertas", "Gunting", "Batu"]
-    menangPlayer = 0
-    menangComputer = 0
-    print(
-        "\n--- Selamat datang di permainan Kertas-Gunting-Batu ---\nAturan Main:\n- Kertas kalah oleh Gunting\n- Gunting kalah oleh Batu\n- Batu kalah oleh Kertas"
-    )
-    while True:
-        try:
-            berapaKali = int(input("Berapa kali Anda ingin bermain (Masukan Angka): "))
+            howMany = int(input("Berapa kali Anda ingin bermain (Masukan Angka): "))
             break
         except ValueError:
             print("Tolong jangan memasukkan huruf!\n")
-
-    for x in range(berapaKali):
-        pilihanPlayer = playerMilih(
-            f"\nPertandingan Ke-{x + 1}\nPilihan:\n1. Kertas\n2. Gunting\n3. Batu"
-        )
-        pilihanComputer = computerMilih()
+    for x in range(howMany):
+        while True:
+            try:
+                print(
+                    f"\nPertandingan Ke-{x+1}\nPilihan:\n1. {choices[0]}\n2. {choices[1]}\n3. {choices[2]}"
+                )
+                playerChoice = int(input("Silahkan pilih nomor pilihan Anda: "))
+                if not 0 < playerChoice < 4:
+                    print("Tolong pilih nomor yang telah disediakan")
+                else:
+                    break
+            except ValueError:
+                print("Tolong Masukkan Angka!\n")
+        computerChoice = random.randrange(1, 4)
         print(
-            f"\nPlayer: {pilihan[pilihanPlayer - 1]} Vs Computer: {pilihan[pilihanComputer - 1]}"
+            f"\nPlayer: {choices[playerChoice - 1]} Vs Computer: {choices[computerChoice - 1]}"
         )
-        match cek(pilihanPlayer, pilihanComputer):
+        if playerChoice == 1 and computerChoice == 2:
+            outcome = 2
+        elif playerChoice == 1 and computerChoice == 3:
+            outcome = 1
+        elif playerChoice == 2 and computerChoice == 1:
+            outcome = 1
+        elif playerChoice == 2 and computerChoice == 3:
+            outcome = 2
+        elif playerChoice == 3 and computerChoice == 1:
+            outcome = 2
+        elif playerChoice == 3 and computerChoice == 2:
+            outcome = 1
+        else:
+            outcome = 0
+
+        match outcome:
             case 0:
-                pass
+                playerWins += 1
+                computerWins += 1
             case 1:
-                menangPlayer += 1
+                playerWins += 1
             case 2:
-                menangComputer += 1
+                computerWins += 1
     print()
-    if menangPlayer == menangComputer:
+    print(f"Hasil:\nPlayer: {playerWins} & Computer: {computerWins}")
+    if playerWins == computerWins:
         print("Hasilnya adalah seri!!!")
-    elif menangPlayer > menangComputer:
+    elif playerWins > computerWins:
         print("Selamat Anda memenangkan permainan ini!!!")
     else:
         print("Anda kalah")
     print()
+
+
+def keguba():
+    choicesKeguba = ["Kertas", "Gunting", "Batu"]
+    textKeguba1 = "\n--- Selamat datang di permainan Kertas-Gunting-Batu ---\nAturan Main:\n- Kertas kalah oleh Gunting\n- Gunting kalah oleh Batu\n- Batu kalah oleh Kertas"
+    system(choicesKeguba, textKeguba1)
 
 
 def suit():

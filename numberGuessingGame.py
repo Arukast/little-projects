@@ -71,6 +71,3 @@ def main():
                 break
             case _:
                 print("Please Select Menu Number!!!\n")
-
-
-main()

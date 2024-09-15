@@ -2,6 +2,11 @@
 import random
 import math
 
+# from menuProjectsPrompt import twoOptionsMenu
+
+# if __name__ == "__main__":
+#     twoOptionsMenu("Second", "Play Number Guessing Game", "numberGuessingGameSystem")
+
 
 def numberGuessingGameSystem():
     attemptCounter = 0
@@ -73,4 +78,5 @@ def main():
                 print("Please Select Menu Number!!!\n")
 
 
-main()
+if __name__ == "__main__":
+    main()

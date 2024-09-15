@@ -1,5 +1,10 @@
 import random
 
+# from menuProjectsPrompt import threeOptionsMenu
+
+# if __name__ == "__main__":
+#     threeOptionsMenu("First", "Play Rock-Paper-Scissors", "Play Suit", "keguba", "Suit")
+
 
 def system(choices, text1):
     playerWins = 0

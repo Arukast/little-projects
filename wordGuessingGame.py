@@ -1,98 +1,104 @@
 # Idea project by geeksforgeeks.org
 import random
+from unittest.result import failfast
 
 
 def wordGuessingGameSystem():
     attemptCounter = 0
     flag = False
-    charCounter = 0
     charGuess = ""
-    wordList = ["blue"]
-    # wordList = [
-    #     "apple",
-    #     "banana",
-    #     "cat",
-    #     "dog",
-    #     "elephant",
-    #     "fish",
-    #     "grape",
-    #     "house",
-    #     "ice",
-    #     "jungle",
-    #     "kite",
-    #     "lion",
-    #     "moon",
-    #     "night",
-    #     "orange",
-    #     "pen",
-    #     "queen",
-    #     "rose",
-    #     "sun",
-    #     "tree",
-    #     "umbrella",
-    #     "violin",
-    #     "water",
-    #     "xylophone",
-    #     "yellow",
-    #     "zebra",
-    #     "ant",
-    #     "boat",
-    #     "car",
-    #     "desk",
-    #     "egg",
-    #     "fan",
-    #     "goat",
-    #     "hat",
-    #     "ink",
-    #     "jacket",
-    #     "key",
-    #     "lamp",
-    #     "mouse",
-    #     "notebook",
-    #     "ocean",
-    #     "pizza",
-    #     "quiet",
-    #     "rabbit",
-    #     "star",
-    #     "train",
-    #     "umbrella",
-    #     "vase",
-    #     "whale",
-    #     "yogurt",
-    #     "zoo",
-    #     "blue",
+    wordList = ["BLUE"]
+    # random_words = [
+    #     "APPLE",
+    #     "BANANA",
+    #     "CAT",
+    #     "DOG",
+    #     "ELEPHANT",
+    #     "FISH",
+    #     "GRAPE",
+    #     "HOUSE",
+    #     "ICE",
+    #     "JUNGLE",
+    #     "KITE",
+    #     "LION",
+    #     "MOON",
+    #     "NIGHT",
+    #     "ORANGE",
+    #     "PEN",
+    #     "QUEEN",
+    #     "ROSE",
+    #     "SUN",
+    #     "TREE",
+    #     "UMBRELLA",
+    #     "VIOLIN",
+    #     "WATER",
+    #     "XYLOPHONE",
+    #     "YELLOW",
+    #     "ZEBRA",
+    #     "ANT",
+    #     "BOAT",
+    #     "CAR",
+    #     "DESK",
+    #     "EGG",
+    #     "FAN",
+    #     "GOAT",
+    #     "HAT",
+    #     "INK",
+    #     "JACKET",
+    #     "KEY",
+    #     "LAMP",
+    #     "MOUSE",
+    #     "NOTEBOOK",
+    #     "OCEAN",
+    #     "PIZZA",
+    #     "QUIET",
+    #     "RABBIT",
+    #     "STAR",
+    #     "TRAIN",
+    #     "UMBRELLA",
+    #     "VASE",
+    #     "WHALE",
+    #     "YOGURT",
+    #     "ZOO",
     # ]
     print("\n=== Welcome to Word Guessing Game! ===")
     userName = input("Hey What is your name: ")
     print(f"Hei {userName} and Good Luck!")
     randomWord = random.choice(wordList)
     while attemptCounter < 13:
-        attemptCounter += 1
-        print(f"\n--- Attempts {attemptCounter} ---")
-        for char in randomWord:
-            if char in charGuess:
-                charCounter -= 1
-                print(char, end="")
-            else:
-                print("_", end="")
-                charCounter += 1
-        if charCounter == 0:
+        failedChars = 0
+        for chars in randomWord:
+            if chars not in charGuess:
+                failedChars += 1
+        if failedChars == 0:
             flag = True
             break
-        else:
-            for char in input("\nGuess the word: "):
-                charGuess += char
+        attemptCounter += 1
+        print(f"\n--- Attempts {attemptCounter} ---")
+        for chars in randomWord:
+            if chars in charGuess:
+                print(chars, end="")
+            else:
+                print("_", end="")
+        for chars in input("\nGuess the word: ").upper():
+            if chars not in charGuess:
+                charGuess += chars
     if flag == True:
-        print(
-            f'CONGRATULATIONS! You have guessed the word "{randomWord}" in {attemptCounter} attempt(s)!'
-        )
+        if attemptCounter == 1:
+            print(
+                f'\nCONGRATULATIONS! You have guessed the word "{randomWord}" in {attemptCounter} attempt.'
+            )
+        else:
+            print(
+                f'\nCONGRATULATIONS! You have guessed the word "{randomWord}" in {attemptCounter} attempts.'
+            )
     else:
-        print(f"\nThe word is {randomWord}\nBetter luck next time")
+        print(f"\nYou Lose!\nThe word is {randomWord}\nBetter luck next time!")
 
 
 def main():
     while True:
-        print("=== Welcome to my third Project ===")
+        print("\n=== Welcome to my Third Project ===")
         menuChoosing = input(
             "Menu:\n1. Play Word Guessing Game\n2. Quit Program\nSelect Menu (Number): "
         )

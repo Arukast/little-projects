@@ -49,9 +49,14 @@ def numberGuessingGameSystem():
             )
         )
         if userGuess == chosenRandomNumber:
-            print(
-                f"CONGRATS!!! You have guessed it right, the chosen number is {chosenRandomNumber}, and you guessed it in {attemptCounter} attempts!!!\n"
-            )
+            if attemptCounter == 1:
+                print(
+                    f"CONGRATULATIONS! You have guessed it right, the chosen number is {chosenRandomNumber}, and you guessed it in {attemptCounter} attempt."
+                )
+            else:
+                print(
+                    f"CONGRATULATIONS! You have guessed it right, the chosen number is {chosenRandomNumber}, and you guessed it in {attemptCounter} attempts."
+                )
             flag = 1
             break
         elif userGuess > chosenRandomNumber and not (attemptCounter == totalChances):
@@ -64,7 +69,7 @@ def numberGuessingGameSystem():
 
 def main():
     while True:
-        print("=== Welcome to my second Project ===")
+        print("\n=== Welcome to my second Project ===")
         menuChoosing = input(
             "Menu:\n1. Play Number Guessing Game\n2. Quit Program\nSelect Menu (Number): "
         )

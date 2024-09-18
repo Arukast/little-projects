@@ -65,6 +65,7 @@ def wordGuessingGameSystem():
     userName = input("Hey What is your name: ")
     print(f"Hei {userName} and Good Luck!")
     randomWord = random.choice(wordList)
+    # lenRandomWord = len(randomWord)
     while attemptCounter < 13:
         failedChars = 0
         for chars in randomWord:
@@ -80,9 +81,18 @@ def wordGuessingGameSystem():
                 print(chars, end="")
             else:
                 print("_", end="")
-        for chars in input("\nGuess the word: ").upper():
-            if chars not in charGuess:
-                charGuess += chars
+        while True:
+            guess = input("\nGuess the word: ").upper()
+            print(f"{len(guess)} {len(randomWord)}")
+            if len(guess) <= len(randomWord):
+                for chars in guess:
+                    if chars not in charGuess:
+                        charGuess += chars
+                break
+            else:
+                print(
+                    "Please make sure the length of the characters you enter is less than or equal to the length of the word being guessed."
+                )
     if flag == True:
         if attemptCounter == 1:
             print(
